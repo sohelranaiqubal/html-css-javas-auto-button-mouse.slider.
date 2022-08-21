@@ -1,0 +1,87 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .slider{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000088;
+}
+
+.container{
+  height: 600px;
+  width: 600px;
+  display: flex;
+  overflow: hidden;
+}
+
+
+  
+ img {
+   
+    transition: margin-left 300ms linear;
+    height: 100%;
+    width: 100%;
+} */
+
+/* full stack niraj youtube */
+.niraj{ 
+  padding-top: 30px;
+}
+.niraj h1{ 
+  text-align: center;
+  font-size: 40px;
+
+}
+.container-box{ 
+  margin: 0 auto;
+  height: 400px;
+  width: 60%;
+  position: relative;
+  overflow: hidden;
+}
+.slides{ 
+  display: flex;
+  height: 100%;
+}
+.slide{ 
+  min-width: 100%;
+  position: relative;
+}
+.slide img{ 
+  width: 100%;
+  height: 100%;
+}
+.slides-control{
+  position: absolute;
+  top:50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#prev-btn,#next-btn{ 
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 10px;
+}
+#prev-btn,#next-btn:focus{ 
+  outline: none;
+}
+.slide-content{ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 50px;
+  color: white;
+}

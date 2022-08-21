@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-slider</title>
+  <script src="https://kit.fontawesome.com/0d1b4df2b4.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="auto.css">
+</head>
+<body>
+  <!--!RYAN WEB TECH YOUTUBE  -->
+  <!-- <section class="slider"> 
+    <div class="container">
+      <img class="firstImg" src="faysal111.jpg" alt="">
+      <img src="faysal2.jpg" alt="">
+      <img src="slide-1.jpg" alt=" ">
+      <img src="faysalfre.jpg" alt="">
+     </div>
+    
+  </section> -->
+<!--! Full stack niraj Youtube chanel  -->
+<section class="niraj"> 
+  <h1>Full stack niraj slider</h1>
+  <div class="container-box"> 
+    <div class="slides"> 
+      <div class="slide">
+         <img src="1.jpg" alt="">
+         <div class="slide-content"> 
+          <h1>This is success</h1>
+         </div>
+      </div>
+      <div class="slide">
+        <img src="2.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="3.jpg" alt="">
+      </div>
+      <div class="slide">
+        <img src="4.jpg" alt="">
+      </div>
+    </div>
+    <div class="slides-control"> 
+      <button id="prev-btn"><i class="fas fa-angle-left"></i></button>
+      <button id="next-btn"><i class="fas fa-angle-right"></i></button>
+    </div>
+  </div>
+</section>
+
+
+  <script>
+// let width = document.querySelector('.container').offsetWidth;
+// let numberOfImages = document.querySelectorAll('img').length;
+// let firstImg = document.querySelector('.container').firstElementChild;
+
+// let current = 0;
+
+// function moveImg() {
+//  let numberOfPixels = current * width;
+
+//  if (current === numberOfImages) {
+//   firstImg.style.marginLeft = "0px";
+//   current = 0;
+//  } else {
+//   firstImg.style.marginLeft = `-${numberOfPixels}px`;
+//   current++;
+//  }
+
+// }
+
+// setInterval("moveImg()", 3000);
+
+// niraj slider
+const slideContainer = document.querySelector('.container-box')
+const slide = document.querySelector('.slides')
+const nextBtn = document.getElementById('next-btn')
+const prevBtn = document.getElementById('prev-btn')
+const interval = 3000; 
+
+let slides = document.querySelectorAll('.slide');
+
+let index = 1;
+let slideId;
+
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+firstClone.id = 'first-clone';
+lastClone.id = 'last-clone';
+
+slide.append(firstClone);
+slide.prepend(lastClone);
+
+let slideWidth = slides[index].clientWidth;
+
+slide.style.transform = `translateX(${-slideWidth * index}px)`;
+
+
+
+const startSlide = ()=>{
+ slideId = setInterval(() => {
+     moveToNextSlide();
+  }, interval);
+}
+
+const getSlides = () => document.querySelectorAll('.slide');
+
+slide.addEventListener('transitionend', ()=>{ 
+  slides = getSlides();
+   if (slides[index].id === firstClone.id) {
+      slide.style.transition = 'none';
+      index = 1;
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+   }
+   if (slides[index].id === lastClone.id) {
+      slide.style.transition = 'none';
+      index = slides.length - 2;
+      slide.style.transform = `translateX(${-slideWidth * index}px)`;
+   }
+});
+
+const moveToNextSlide = ()=>{ 
+  slides = getSlides();
+  if (index >= slides.length -1) return;
+       index++;
+       slide.style.transform = `translateX(${-slideWidth * index}px)`;
+       slide.style.transition = '.7s';
+}
+
+
+const moveToPreviousSlide = () =>{ 
+    if (index <= 0) return;
+       index--;
+       slide.style.transform = `translateX(${-slideWidth * index}px)`;
+       slide.style.transition = '.7s';
+}
+
+slideContainer.addEventListener('mouseenter', ()=>{ 
+    clearInterval(slideId);
+});
+
+slideContainer.addEventListener('mouseleave', startSlide);
+
+nextBtn.addEventListener('click', moveToNextSlide)
+prevBtn.addEventListener('click', moveToPreviousSlide);
+
+startSlide();
+  </script>
+</body>
+</html>
+   
